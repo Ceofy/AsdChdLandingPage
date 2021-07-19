@@ -1,122 +1,173 @@
 import React from 'react';
 
-import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ButtonLink from '../components/buttonLink';
-import Title from '../components/title';
-import './pageStyles/index.css';
-import ButtonsContainer from '../components/buttonsContainer';
-import TopPanel from '../components/topPanel';
 import Panel from '../components/panel';
+import LinkOut from '../components/LinkOut';
+import Layout from '../components/layout';
+import TopPanel from '../components/topPanel';
+import ButtonLink from '../components/buttonLink';
+
+import HorizontalTitle from '../components/horizontalTitle';
+import HorizontalButtonsContainer from '../components/horizontalButtonsContainer';
+
+import ndexLogo from '../images/ndex.png';
+import ndexLogoUnderline from '../images/ndexLogoUnderline.png';
+
+import styles from './pageStyles/index.module.css';
+
+import ccbbLogo from '../images/ccbbLogo.png';
+import ucsdLogo from '../images/ucsdsomLogo.png';
+import willseyLogo from '../images/willseyLogo.png';
+import winLogo from '../images/winLogo.png';
 
 const contrastBackgroundColor = 'rgba(65,182,255, 0.25)';
 const contrastTextColor = 'black';
 
 const IndexPage = () => (
   <Layout backgroundColor={contrastBackgroundColor}>
-    <SEO title='Title' />
+    <SEO title='Molecular networks underlying autism and congenital heart disease' />
     <TopPanel>
-      <Title title='Title' subtitle='Subtitle' />
-      <ButtonsContainer>
-        <ButtonLink
-          text='View in NDEx'
-          link='http://ndexbio.org'
-          tooltip={true}
-          tooltipPosition='top'
-          tooltipText={
-            <span>
-              {'NDEx is an online commons for biological networks. '}
-              <span
-                style={{
-                  display: 'inline-block',
-                }}
-              >
-                <a href='#ndex' style={{ color: 'rgb(0, 0, 0, 0.8)' }}>
-                  Learn more
-                </a>
-              </span>
-              {'.'}
+      <HorizontalTitle
+        title={
+          <>
+            <span style={{ display: 'inline-block' }}>
+              Molecular networks underlying autism{' '}
             </span>
-          }
+            <span style={{ display: 'inline-block' }}>
+              and congenital heart disease
+            </span>
+          </>
+        }
+        subtitle={
+          <span style={{ display: 'inline-block' }}>
+            View in <a href='#ndex' />
+            <a href='#ndex'>
+              <div className={styles.ndexLogo}>
+                <img
+                  src={ndexLogo}
+                  className={styles.noUnderlineLogo}
+                  alt='NDEx'
+                />
+                <img
+                  src={ndexLogoUnderline}
+                  className={styles.underlineLogo}
+                  alt='NDEx'
+                />
+              </div>
+            </a>
+            :
+          </span>
+        }
+      />
+      <HorizontalButtonsContainer>
+        <ButtonLink
+          text='ASD-CHD systems map'
+          link='http://www.ndexbio.org/#/network/5109757e-a5d6-11ea-aaef-0ac135e8bacf?accesskey=7774dbc59127289d2d471de0b3d1be0a45c49c275679f61ddd3f018a500b1574'
+          vertical={false}
         />
         <ButtonLink
-          text='View in HiView'
-          link='http://hiview.ucsd.edu/'
-          tooltip={true}
-          tooltipPosition='bottom'
-          tooltipText={
-            <span>
-              {'HiView is a tool for viewing large hierarchical networks. '}
-              <a href='#hiview' style={{ color: 'rgb(0, 0, 0, 0.8)' }}>
-                Learn more
-              </a>
-              {'.'}
-            </span>
-          }
+          text='ASD-CHD gene network'
+          link='http://ndexbio.org/#/network/cedacca2-8f2c-11ea-aaef-0ac135e8bacf?accesskey=6aae3aa35edff96125195c0573c912aac24c1cf3baa47786e0ff7490d5be575f'
+          vertical={false}
         />
-      </ButtonsContainer>
+      </HorizontalButtonsContainer>
     </TopPanel>
 
     <Panel backgroundColor='white' textColor='rgba(0, 0, 0, 0.8)'>
-      <h2>What is Title?</h2>
-      <p>{'Content'}</p>
+      <h2>
+        Genetic variants in autism and congenital heart disease converge on
+        common molecular networks and implicate SCN2A as a shared risk gene
+      </h2>
+      <p>
+        Patients with congenital heart disease (CHD) have elevated incidence of
+        neurodevelopmental disorders, including autism spectrum disorders (ASD).
+        While there is clear evidence for shared genetic risk, the extent to
+        which these disorders share molecular mechanisms remains unknown. Here
+        we report that de novo coding variants from these disorders converge on
+        genes interconnected by a common ASD-CHD molecular network. Variants in
+        these genes are overrepresented in patients from an independent
+        replication cohort with comorbid brain and heart conditions. The network
+        reveals a hierarchy of shared functions including chromatin
+        modification, MAPK/Notch signaling, and an unanticipated role for ion
+        channels, and it uncovers links between rare and common variants in ASD.
+        Mutagenesis in Xenopus tropicalis further validates a subset of shared
+        risk genes as essential to brain and heart morphogenesis, including the
+        sodium channel SCN2A, suggesting that ion transport is a convergent
+        developmental pathway carrying risk for both disorders. This study
+        provides a framework for identifying novel risk genes and pathways
+        involved in comorbid conditions.
+      </p>
     </Panel>
     <Panel
       backgroundColor={contrastBackgroundColor}
       textColor={contrastTextColor}
     >
-      <h2>
-        What is NDEx?
-        <a id='ndex' />
-      </h2>
+      <h2>Supporting Code</h2>
+      <p>
+        {
+          'Comprehensive Jupyter notebooks and supporting code to reproduce all analyses are available on '
+        }
+        <LinkOut link='https://github.com/ucsd-ccbb/ASD_combined_network_analysis'>
+          Github
+        </LinkOut>
+        {'.'}
+      </p>
+    </Panel>
+    <Panel>
+      <a id='ndex'>
+        <h2>How to download</h2>
+      </a>
       <p>
         {'NDEx, the Network Data Exchange ('}
-        <a href='http://ndexbio.org' target='_blank' rel='noopener'>
-          www.ndexbio.org
-        </a>
+        <LinkOut link='http://ndexbio.org'>www.ndexbio.org</LinkOut>
         {', Pratt et. al. 2017 '}
-        <a
-          href='https://dx.doi.org/10.1158/0008-5472.CAN-17-0606'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
+        <LinkOut link='https://dx.doi.org/10.1158/0008-5472.CAN-17-0606'>
           DOI: 10.1158/0008-5472.CAN-17-0606
-        </a>
+        </LinkOut>
         {
           '), is an online commons for biological networks where networks of many types and formats can be shared, accessed, and stored by users and applications. NDEx is tightly integrated with Cytoscape ('
         }
-        <a
-          href='https://cytoscape.org/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          https://cytoscape.org/
-        </a>
-        {'), and the '}
-        <a href='http://ndexbio.org' target='_blank' rel='noopener noreferrer'>
-          Title
-        </a>
+        <LinkOut link='https://cytoscape.org/'>https://cytoscape.org/</LinkOut>
         {
-          ' network can be downloaded to Cytoscape by clicking the “Open in Cytoscape” button at the bottom-right of the web page.'
+          '), and the ASD-CHD systems map and ASD-CHD gene networks can be viewed in NDEX and downloaded to Cytoscape by clicking the “Open in Cytoscape” button at the bottom-right of the web page.'
         }
       </p>
-      <h2>
-        What is HiView?
-        <a id='hiview' />
-      </h2>
-      <p>
-        {'The HiView web application ('}
-        <a
-          href='http://hiview.ucsd.edu/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          http://hiview.ucsd.edu/
-        </a>
-        {
-          ') is an interactive visualization tool which supports exploration of the Title and any similar hierarchical models. HiView allows the user to (1) interactively zoom across many scales in the model, from an expansive view of the entire hierarchy to more focused views of particular subsystems; (2) browse the network data supporting the inference of each subsystem; and (3) search genes and subsystems based on their names or metadata.'
-        }
-      </p>
+    </Panel>
+    <Panel
+      backgroundColor={contrastBackgroundColor}
+      textColor={contrastTextColor}
+    >
+      <h2>Collaborators</h2>
+      <div className={styles.logosContainer}>
+        <LinkOut link='http://idekerlab.ucsd.edu/'>
+          <img
+            alt='UCSD School of Medicine Logo'
+            src={ucsdLogo}
+            className={styles.bigLogo}
+            style={{ marginTop: '2.25em' }}
+          />
+        </LinkOut>
+        <LinkOut link='http://compbio.ucsd.edu/'>
+          <img alt='CCBB Logo' src={ccbbLogo} className={styles.bigLogo} />
+        </LinkOut>
+      </div>
+      <div className={styles.logosContainer}>
+        <LinkOut link='https://weill.ucsf.edu/'>
+          <img
+            alt='Weill Institute of Neuroscience Logo'
+            src={winLogo}
+            className={styles.bigLogo}
+            style={{ marginTop: '1em' }}
+          />
+        </LinkOut>
+        <LinkOut link='https://willseylab.com/'>
+          <img
+            alt='Willsey Lab Logo'
+            src={willseyLogo}
+            className={styles.bigLogo}
+          />
+        </LinkOut>
+      </div>
     </Panel>
   </Layout>
 );

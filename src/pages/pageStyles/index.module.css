@@ -1,0 +1,74 @@
+:root {
+  --header-height: 103px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: 400;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+p {
+  font-size: 20px;
+  margin-left: 5em;
+  margin-right: 5em;
+  line-height: 28px;
+  text-align: justify;
+}
+
+h2::before {
+  display: block;
+  content: ' ';
+  margin-top: calc(-1 * var(--header-height));
+  height: var(--header-height);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.logo {
+  height: 1.249em;
+  margin-bottom: 0;
+  position: relative;
+  top: 0.3em;
+  left: 0;
+  position: absolute;
+}
+
+.noUnderlineLogo {
+  composes: logo;
+}
+
+.ndexLogo:hover .noUnderlineLogo {
+  visibility: hidden;
+}
+
+.underlineLogo {
+  composes: logo;
+  visibility: hidden;
+}
+
+.ndexLogo:hover .underlineLogo {
+  visibility: visible;
+}
+
+.ndexLogo {
+  height: 37.47px;
+  width: 178.58px;
+  display: inline-block;
+  position: relative;
+}
+
+.logosContainer {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.bigLogo {
+  max-width: 26em;
+  margin: 2em;
+  vertical-align: middle;
+}
